@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM centos:centos7
 
 MAINTAINER "Alexandru Berce" <alex@devaccent.com>
 
@@ -13,7 +13,7 @@ RUN yum -y update
 RUN yum -y install php72w php72w-opcache php72w-cli php72w-common php72w-gd php72w-intl php72w-mbstring php72w-mcrypt php72w-mysql php72w-mssql php72w-pdo php72w-pear php72w-soap php72w-xml php72w-xmlrpc php72w-pecl-redis httpd
 
 # Tools
-RUN yum -y install iproute at curl crontabs git
+RUN yum -y install epel-release iproute at curl crontabs git
 
 # Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
