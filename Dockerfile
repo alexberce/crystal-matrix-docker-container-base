@@ -22,7 +22,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 
 # Local time
 RUN rm -rf /etc/localtime \
- && ln -s /usr/share/zoneinfo/UTC /etc/localtime
+ && ln -s /usr/share/zoneinfo/UCT /etc/localtime
 
 # We want some config changes
 COPY config/php_settings.ini /etc/php.d/
