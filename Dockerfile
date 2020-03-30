@@ -3,6 +3,7 @@ FROM centos:centos7
 MAINTAINER "Alexandru Berce" <alex@devaccent.com>
 
 ENV container docker
+ENV TZ=UTC
 
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
  && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
@@ -19,10 +20,6 @@ RUN yum -y install epel-release iproute at curl crontabs git
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
  && php composer-setup.php --install-dir=bin --filename=composer \
  && php -r "unlink('composer-setup.php');"
-
-# Local time
-RUN rm -rf /etc/localtime \
- && ln -s /usr/share/zoneinfo/UCT /etc/localtime
 
 # We want some config changes
 COPY config/php_settings.ini /etc/php.d/
